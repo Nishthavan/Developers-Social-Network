@@ -1,10 +1,13 @@
 const express = require('express');
 const app = express();
-const connectDb = require("./config/db");
+const connectDB = require("./config/db");
 
-connectDb();
-
+connectDB();
 app.get('/',(req,res)=>{res.send("Running");});
+
+//INTI BODY-PARSER USING EXPRESS.JSON;
+//INIT middleware
+app.use(express.json({extended:false}));
 
 // ROUTES TO APIS
 app.use("/api/auth",require("./routes/api/auth"));

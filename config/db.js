@@ -7,7 +7,9 @@ const db1 = config.get("mongoURI");
 // ASCYN AND AWAIT ARE USED IN PLACE OF PROMISES CONTROL THE EVENT LOOP
 const connectDB = async () => {
   try{
-    await mongoose.connect(db1,{useNewUrlParser:true});
+    await mongoose.connect(db1,{useNewUrlParser:true,
+    useUnifiedTopology: true
+  });
     console.log("MongoDB Connected........")
   }
   catch(err){
