@@ -4,7 +4,7 @@ const config = require("config");
 const db1 = config.get("mongoURI");
 
 
-// ASCYN AND AWAIT ARE USED IN PLACE OF PROMISES CONTROL THE EVENT LOOP
+// ASCYN AND AWAIT ARE USED IN PLACE OF PROMISES to CONTROL THE EVENT LOOP
 const connectDB = async () => {
   try{
     await mongoose.connect(db1,{useNewUrlParser:true,
