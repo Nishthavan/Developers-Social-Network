@@ -216,7 +216,7 @@ router.delete("/comment/:id/:comment_id",auth,async(req,res)=>{
     if(comment.user.toString()!==req.user.id){
       return res.status(401).json({msg:"Unauthorized access"});
     }
-
+   // remove index
     const remove_index = post.comments.map(comment=>comment.user.toString()).indexOf(req.user.id);
 
     post.comments.splice(remove_index,1);
