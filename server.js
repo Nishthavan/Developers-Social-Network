@@ -24,7 +24,7 @@ app.use("/api/users",require("./routes/api/users"));
 
 
 // .ENV package is used for deploying to heroku
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT,()=>{
   console.log(`Server Started on Port ${PORT}.`)
 });
