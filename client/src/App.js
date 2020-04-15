@@ -5,8 +5,13 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+//redux
+import {Provider} from "react-redux";
+import  store from "./store";
+
 
 const App = () => (
+  <Provider store = {store}>
   <Router>
     <Fragment>
       <Navbar />
@@ -19,6 +24,7 @@ const App = () => (
       </section>
     </Fragment>
   </Router>
+  </Provider>
 );
 
 
