@@ -1,8 +1,12 @@
 import React , {Fragment,useState } from 'react';
 // import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link,Redirect } from "react-router-dom";
+import {login} from "../../actions/auth";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
 
-const Register = () => {
+
+const Login = ({login,isAuth}) => {
   const [formData,updateForm] = useState({
     email:"",
     Password:"",
@@ -13,7 +17,11 @@ const Register = () => {
    const onChange = e => updateForm({...formData, [e.target.name]:e.target.value});
   const onSubmit = async e => {
     e.preventDefault();
-    console.log("Success");
+    login(email,Password);
+    }
+
+    if(isAuth){
+      return <Redirect to="/dashboard" />
     }
   return <Fragment>
        <h1 className="large text-primary">Sign In</h1>
@@ -33,7 +41,7 @@ const Register = () => {
              required
            />
          </div>
-         <input type="submit" className="btn btn-primary" value="Register" />
+         <input type="submit" className="btn btn-primary" value="Login" />
        </form>
        <p className="my-1">
          Don't have an account? <Link to="/register">Sign Up</Link>
@@ -41,4 +49,12 @@ const Register = () => {
   </Fragment>
 }
 
-export default Register;
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuth: PropTypes.bool
+}
+
+const mapStateToProps = state => ({
+  isAuth: state.auth.isAuth
+});
+export default connect(mapStateToProps,{login})(Login);
