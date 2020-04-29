@@ -1,8 +1,8 @@
-import {REGISTER_SUCCESS,REGISTER_FAIL,USER_LOADED,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAIL,LOGOUT } from "../actions/constants";
+import {REGISTER_SUCCESS,REGISTER_FAIL,USER_LOADED,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAIL,LOGOUT } from "../actions/types";
 
 const intitialState = {
   token : localStorage.getItem("token"),
-  isAuth: null,
+  isAuthenticated: null,
   loading: true,
   user: null
 }
@@ -13,7 +13,7 @@ export default function(state = intitialState, action){
     case USER_LOADED:
       return {
         ...state,
-        isAuth:true,
+        isAuthenticated:true,
         loading: false,
         user:payload
       }
@@ -23,7 +23,7 @@ export default function(state = intitialState, action){
      return{
        ...state,
        ...payload,
-       isAuth: true,
+       isAuthenticated: true,
        loading: false
      }
      case REGISTER_FAIL:
@@ -34,7 +34,7 @@ export default function(state = intitialState, action){
        return{
          ...state,
          ...payload,
-         isAuth: false,
+         isAuthenticated: false,
          loading: false
        }
        default:
